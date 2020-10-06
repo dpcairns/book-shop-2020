@@ -12,7 +12,7 @@ for (let i = 0; i < cart.length; i++) {
     table.appendChild(tr);    
 }
 
-const total = calcTotal(cart);
+const total = calculateTotal(cart);
 
 const totalCell = document.querySelector('.total');
 
@@ -23,7 +23,8 @@ function calculateTotal(cartArray) {
     let accumulator = 0;
 
     // for every item in the cart
-    for (const item of cartArray) {
+    for (let i = 0; i < cartArray.length; i++) {
+        const item = cartArray[i];
         // go get the item's true data
         const trueItem = findById(books, item.id);
 
