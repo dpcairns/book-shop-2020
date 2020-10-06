@@ -1,7 +1,8 @@
-import { cart } from '../data.js';
+import { cart, books } from '../data.js';
 import { renderTableRow } from './cart-utils.js';
+import { findById } from '../utils.js';
 
-const table = document.querySelector('table');
+const table = document.querySelector('tbody');
 
 for (let i = 0; i < cart.length; i++) {
     const book = cart[i];
@@ -10,3 +11,29 @@ for (let i = 0; i < cart.length; i++) {
 
     table.appendChild(tr);    
 }
+
+const total = calcTotal(cart);
+
+const totalCell = document.querySelector('.total');
+
+totalCell.textContent = `Total: $${total}`;
+
+function calculateTotal(cartArray) {
+    // initialize an accumulator to 0
+    let accumulator = 0;
+
+    // for every item in the cart
+    for (const item of cartArray) {
+        // go get the item's true data
+        const trueItem = findById(books, item.id);
+
+        // use the true data's price with the cart's quantity to get the subtotal for this item
+        const subtotal = trueItem.price * item.quantity;
+
+        // add that subtotal to the accumulator
+        accumulator = accumulator + subtotal;
+    }
+
+    return accumulator;
+}
+

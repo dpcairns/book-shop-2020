@@ -1,6 +1,5 @@
 table {
     width: 100%;
-    border: solid 1px;
 }
 
 td, th {
@@ -11,6 +10,16 @@ th {
     background-color: aquamarine;
 }
 
-tr:nth-child(even) {
+tr:nth-child(odd) {
     background: pink;
+}
+
+.total {
+    text-align: right;
+    padding: 5px;
+}
+
+.unstyle {
+    background-color: white;
+    border: none
 }
