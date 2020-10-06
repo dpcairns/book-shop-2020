@@ -1,9 +1,14 @@
 .book {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     width: 200px;
     padding: 10px;
     border: solid 1px;
     text-align: center;
     border-radius: 5px;
+    margin: 10px;
 }
 
 .book > img {
@@ -17,4 +22,8 @@
 
 .on-sale {
     background-color: greenyellow;
+}
+
+ul {
+    display: flex;
 }

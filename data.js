@@ -1,3 +1,5 @@
+// stubbed out data
+
 export const books = [
     {
         id: 'airplanes',
@@ -8,7 +10,7 @@ export const books = [
         onSale: false,
     },
     {
-        id: 'gardens23',
+        id: 'gardens',
         title: 'How to Grow Food: A Book About Gardens',
         author: 'Samwise Gamgee',
         cover: 'garden.png',
@@ -22,5 +24,20 @@ export const books = [
         cover: 'collectibles.png',
         price: 2,
         onSale: false,
+    },
+];
+
+export const cart = [
+    {
+        id: 'airplanes',
+        quantity: 7,
+    },
+    {
+        id: 'gardens',
+        quantity: 2,
+    },
+    {
+        id: 'collectibles',
+        quantity: 2,
     },
 ];
