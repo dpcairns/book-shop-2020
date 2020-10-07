@@ -56,8 +56,6 @@ export function renderBook(book) {
     button.textContent = 'Add to cart';
 
     button.addEventListener('click', () => {
-        console.log('clicked on: ' + book.id);
-
         // get or initialize the cart
         const cart = getFromLocalStorage('CART') || [];
 
