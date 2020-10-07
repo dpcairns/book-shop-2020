@@ -37,7 +37,7 @@ export function renderTableRow(cartItem) {
     tdName.textContent = title;
 
     const total = price * cartItem.quantity;
-
+    
     tdTotal.textContent = `$${total}`;
 
     tr.append(tdName, tdPrice, tdQuantity, tdTotal);

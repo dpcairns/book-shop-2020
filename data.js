@@ -26,18 +26,3 @@ export const books = [
         onSale: false,
     },
 ];
-
-export const cart = [
-    {
-        id: 'airplanes',
-        quantity: 7,
-    },
-    {
-        id: 'gardens',
-        quantity: 2,
-    },
-    {
-        id: 'collectibles',
-        quantity: 2,
-    },
-];

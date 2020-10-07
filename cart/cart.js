@@ -1,8 +1,12 @@
-import { cart, books } from '../data.js';
+import { books } from '../data.js';
 import { renderTableRow } from './cart-utils.js';
-import { findById } from '../utils.js';
+import { findById, getFromLocalStorage } from '../utils.js';
 
 const table = document.querySelector('tbody');
+
+// replacing the data.js cart with the casrt in local storage
+// by default, let's call this an empty array if there's nothing in local storage yet
+const cart = getFromLocalStorage('CART') || [];
 
 for (let i = 0; i < cart.length; i++) {
     const book = cart[i];
