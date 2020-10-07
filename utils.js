@@ -8,6 +8,7 @@
         onSale: true,
 };
 */
+export const CART = 'CART';
 
 export function findById(someArray, someId) {
     for (let i = 0; i < someArray.length; i++) {
@@ -26,6 +27,7 @@ export function renderBook(book) {
     const cover = document.createElement('img');
     const price = document.createElement('p');
     const button = document.createElement('button');
+    const removeButton = document.createElement('button');
 
     li.classList.add('book');
 
@@ -57,7 +59,8 @@ export function renderBook(book) {
 
     button.addEventListener('click', () => {
         // get or initialize the cart
-        const cart = getFromLocalStorage('CART') || [];
+        // MAGIC STRING
+        const cart = getFromLocalStorage(CART) || [];
 
         // itemInCart will be either { id: 'apple', quantity: 2}, or undefined 
         const itemInCart = findById(cart, book.id);
@@ -78,10 +81,32 @@ export function renderBook(book) {
             itemInCart.quantity++;
         }
 
-        setInLocalStorage('CART', cart);
+        setInLocalStorage(CART, cart);
     });
     
+    removeButton.textContent = 'remove one';
+
+    removeButton.addEventListener('click', () => {
+        // get or initialize the cart
+        // MAGIC STRING
+        const cart = getFromLocalStorage(CART) || [];
+
+        // itemInCart will be either { id: 'apple', quantity: 2}, or undefined 
+        const itemInCart = findById(cart, book.id);
+
+        // is this the first apple in the cart?
+        if (itemInCart) {
+            // however, if i already have an apple, just increment the quantity of apples in the cart    
+            if (itemInCart.quantity !== 0) {
+                itemInCart.quantity--;
+            }
+        }
+
+        setInLocalStorage(CART, cart);
+    });
+
     li.appendChild(button);
+    li.appendChild(removeButton);
 
     return li;
 }

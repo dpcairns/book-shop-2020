@@ -1,19 +1,21 @@
 import { books } from '../data.js';
 import { renderTableRow } from './cart-utils.js';
-import { findById, getFromLocalStorage } from '../utils.js';
+import { findById, getFromLocalStorage, CART } from '../utils.js';
 
 const table = document.querySelector('tbody');
-
+const orderButton = document.querySelector('button');
 // replacing the data.js cart with the casrt in local storage
 // by default, let's call this an empty array if there's nothing in local storage yet
-const cart = getFromLocalStorage('CART') || [];
+const cart = getFromLocalStorage(CART) || [];
 
 for (let i = 0; i < cart.length; i++) {
     const book = cart[i];
 
-    const tr = renderTableRow(book);
+    if (book.quantity >= 0) {
+        const tr = renderTableRow(book);
+        table.appendChild(tr);    
+    }
 
-    table.appendChild(tr);    
 }
 
 const total = calculateTotal(cart);
@@ -42,3 +44,11 @@ function calculateTotal(cartArray) {
     return accumulator;
 }
 
+orderButton.addEventListener('click', () => {
+    const stringyCart = JSON.stringify(cart, true, 2);
+    alert(stringyCart);
+
+    // localStorage.removeItem(CART);
+    localStorage.clear();
+    window.location.href = '/';
+});
