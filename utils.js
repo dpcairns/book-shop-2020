@@ -1,3 +1,6 @@
+import { books as hardCodedBooks } from '../data.js';
+import { PRODUCTS, CART } from './constants.js';
+
 /*
 {
         id: 'gardens23',
@@ -8,7 +11,7 @@
         onSale: true,
 };
 */
-export const CART = 'CART';
+
 
 export function findById(someArray, someId) {
     for (let i = 0; i < someArray.length; i++) {
@@ -18,6 +21,24 @@ export function findById(someArray, someId) {
             return item;
         }
     }
+}
+
+export function getLocalStorageBooks() {
+
+    // go get localStorageBooks from local storage and call them localStorageBooks
+    let localStorageBooks = JSON.parse(localStorage.getItem(PRODUCTS));
+
+    // if there are no localStorageBooks in local storage yet
+    // if they've never been to the site
+    if (!localStorageBooks) {
+        // go grab the hard coded localStorageBooks, and SEED local storage with them
+        const stringyBooks = JSON.stringify(hardCodedBooks);
+
+        localStorage.setItem(PRODUCTS, stringyBooks);
+        localStorageBooks = hardCodedBooks;
+    }
+
+    return localStorageBooks;
 }
 
 export function renderBook(book) {

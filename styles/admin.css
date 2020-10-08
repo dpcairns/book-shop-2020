@@ -1,0 +1,17 @@
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+    margin: 10px;
+}
+
+label {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    width: 50%;
+    align-self: flex-end;
+}
